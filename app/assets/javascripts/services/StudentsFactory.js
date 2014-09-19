@@ -2,6 +2,10 @@ studentRoster.factory('StudentsFactory', function StudentsFactory($http) {
   var factory = {};
   factory.students = [];
 
+  factory.getStudents = function() {
+    return $http.get('/students.json')
+  };
+
   factory.addStudent = function() {
     factory.students.push({"name": factory.studentName});
     $http.post('/students.json', factory)
@@ -11,14 +15,12 @@ studentRoster.factory('StudentsFactory', function StudentsFactory($http) {
   factory.deleteStudent = function(student) {
     var index = factory.students.indexOf(student)
     factory.students.splice(index, 1);
-    console.log(student.id)
     $http.delete("/students/" + student.id + ".json")
   };
 
-  factory.getStudents = function() {
-    return $http.get('/students.json')
+  factory.updateStudent = function(student) {
+    $http.put(("/students/" + student.id + ".json"), student);
   };
-
 
   return factory;
 });
