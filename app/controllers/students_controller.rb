@@ -12,9 +12,8 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new
-    name_in_array = params[:students]
-    name_in_hash = name_in_array.pop
-    @student.name = name_in_hash["name"]
+
+    @student.name = params[:studentName]
 
     if @student.save
       respond_to do |format|
@@ -66,6 +65,6 @@ class StudentsController < ApplicationController
 private
 
   def student_params
-    params.require(:student).permit(:students, :student, :id, :name)
+    params.require(:student).permit(:students, :student, :id, :name, :studentName)
   end
 end

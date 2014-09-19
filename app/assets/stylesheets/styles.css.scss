@@ -1,6 +1,11 @@
+@import "bootstrap";
+
 a:hover {
   color: red;
+  font-weight: bold;
 }
+
 span.ng-binding:hover {
   color: orange;
+  font-weight: bold;
 }

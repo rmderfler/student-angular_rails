@@ -7,9 +7,7 @@ studentRoster.factory('StudentsFactory', function StudentsFactory($http) {
   };
 
   factory.addStudent = function() {
-    factory.students.push({"name": factory.studentName});
-    $http.post('/students.json', factory)
-    factory.studentName = null;
+    return $http.post('/students.json', factory)
   };
 
   factory.deleteStudent = function(student) {
@@ -21,6 +19,5 @@ studentRoster.factory('StudentsFactory', function StudentsFactory($http) {
   factory.updateStudent = function(student) {
     $http.put(("/students/" + student.id + ".json"), student);
   };
-
   return factory;
 });
