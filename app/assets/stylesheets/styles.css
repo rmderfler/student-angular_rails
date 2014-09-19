@@ -1,0 +1,6 @@
+a:hover {
+  color: red;
+}
+span.ng-binding:hover {
+  color: orange;
+}
