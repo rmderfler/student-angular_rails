@@ -11,11 +11,14 @@ studentRoster.factory('StudentsFactory', function StudentsFactory($http) {
   factory.deleteStudent = function(student) {
     var index = factory.students.indexOf(student)
     factory.students.splice(index, 1);
+    console.log(student.id)
+    $http.delete("/students/" + student.id + ".json")
   };
 
   factory.getStudents = function() {
     return $http.get('/students.json')
   };
+
 
   return factory;
 });
